@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\agreenbhm\Desktop\ysoserial.net-2\ysoserial\bin\Debug\CompactFormatter.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A2B7BA0-C29D-4663-867C-5E50A2FC4654}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>CompactFormatter</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+    <RootNamespace>CompactFormatter</RootNamespace>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArraySerializer.cs" />
+    <Compile Include="ClassInspector.cs" />
+    <Compile Include="CFormatterMode.cs" />
+    <Compile Include="PayloadType.cs" />
+    <Compile Include="missingTypeAndValues.cs" />
+    <Compile Include="CompactFormatter.cs" />
+    <Compile Include="SystemIpAddr_Overrider.cs" />
+    <Compile Include="SystemRegEx_Overrider.cs" />
+    <Compile Include="SystemGuid_Overrider.cs" />
+    <Compile Include="SystemUri_Overrider.cs" />
+    <Compile Include="SystemServiceModelEndpointAddress_Overrider.cs" />
+    <Compile Include="SystemIntPtr_Overrider.cs" />
+    <Compile Include="SystemHashtable_Overrider.cs" />
+    <Compile Include="FrameworkVersion.cs" />
+    <Compile Include="Framework.cs" />
+    <Compile Include="ObjectTable.cs" />
+    <Compile Include="PrimitiveSerializer.cs" />
+    <Compile Include="SurrogateList.cs" />
+    <Compile Include="TypeExtensions.cs" />
+    <Compile Include="Attributes\OverriderAttribute.cs" />
+    <Compile Include="Attributes\SurrogateAttribute.cs" />
+    <Compile Include="Interfaces\ICFormatter.cs" />
+    <Compile Include="Interfaces\IOverrider.cs" />
+    <Compile Include="Interfaces\ICSerializable.cs" />
+    <Compile Include="Interfaces\IStreamParser.cs" />
+    <Compile Include="Interfaces\ISurrogate.cs" />
+    <Compile Include="Exception\AssemblySerializationException.cs" />
+    <Compile Include="Exception\AssertionException.cs" />
+    <Compile Include="Exception\RegisterOverriderException.cs" />
+    <Compile Include="Exception\RegisterSurrogateException.cs" />
+    <Compile Include="Exception\SerializationException.cs" />
+    <Compile Include="Exception\StreamParserNotAvailableException.cs" />
+    <Compile Include="Exception\TypeSerializationException.cs" />
+    <Compile Include="Surrogate\DataSetOverrider.cs" />
+    <Compile Include="Surrogate\DefaultSurrogates.cs" />
+    <Compile Include="Surrogate\GhostDataTableOverrider.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

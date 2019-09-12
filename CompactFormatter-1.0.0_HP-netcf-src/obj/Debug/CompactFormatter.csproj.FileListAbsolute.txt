@@ -1,0 +1,6 @@
+C:\Users\agreenbhm\Desktop\CompactFormatter\bin\Debug\CompactFormatter.dll
+C:\Users\agreenbhm\Desktop\CompactFormatter\bin\Debug\CompactFormatter.pdb
+C:\Users\agreenbhm\Desktop\CompactFormatter\obj\Debug\CompactFormatter.csprojAssemblyReference.cache
+C:\Users\agreenbhm\Desktop\CompactFormatter\obj\Debug\CompactFormatter.csproj.CoreCompileInputs.cache
+C:\Users\agreenbhm\Desktop\CompactFormatter\obj\Debug\CompactFormatter.dll
+C:\Users\agreenbhm\Desktop\CompactFormatter\obj\Debug\CompactFormatter.pdb
