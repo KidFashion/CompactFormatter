@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompactFormatter", "CompactFormatter.csproj", "{BDA3EBC3-5210-41CA-AA65-7209390D03FE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{BDA3EBC3-5210-41CA-AA65-7209390D03FE}.Debug.ActiveCfg = Debug|.NET
+		{BDA3EBC3-5210-41CA-AA65-7209390D03FE}.Debug.Build.0 = Debug|.NET
+		{BDA3EBC3-5210-41CA-AA65-7209390D03FE}.Release.ActiveCfg = Release|.NET
+		{BDA3EBC3-5210-41CA-AA65-7209390D03FE}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

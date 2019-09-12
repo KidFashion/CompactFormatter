@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+
+<project name="CompactFormatter" default="build" basedir="source">
+
+<!-- Here place a reference to to the location of nunit.framework assembly -->
+<property name="nunit.assembly" value="C:\Programmi\NUnit V2.1\bin\nunit.framework.dll"/>
+
+<property name="project.name" value="CompactFormatter"/>
+<property name="project.version" value="0.11.3"/>
+<property name="project.codename" value="Monga"/>
+
+	<target name="build" depends="clean, buildFull" description="Builds the library targetting the .NET Framework 1.1">
+	</target>
+
+    <target name="buildFull" description="Builds the library targetting the .NET Framework 1.1">
+	<echo message="Building ${project.name} library (release version ${project.codename}:${project.version}) for the .NET Framework 1.1"/>
+		<!-- Change reference to use .Net Compact Framework as target -->
+		<property name="nant.settings.currentframework" value="net-1.1" />
+
+		<mkdir dir=".\release" failonerror="false"/>
+		<mkdir dir=".\release\dotnet-1.1" failonerror="false"/>
+
+          <csc target="library" output=".\release\dotnet-1.1\CompactFormatter.dll" debug="false">
+		<arg value="/filealign:512" />
+		<sources>
+		<includes name="*.cs"/>
+		<includes name="Attributes\*.cs"/>
+		<includes name="Exceptions\*.cs"/>
+		</sources>
+      </csc>
+    </target>
+
+    <target name="buildcf" description="Builds the library targetting the Compact Framework 1.0">
+	<echo message="Building ${project.name} library (release version ${project.codename}:${project.version}) for the .NET Compact Framework 1.0"/>
+		<!-- Change reference to use .Net Compact Framework as target -->
+		<property name="nant.settings.currentframework" value="netcf-1.0" />
+
+		<mkdir dir=".\release" failonerror="false"/>
+		<mkdir dir=".\release\dotnetcf-1.0" failonerror="false"/>
+
+          <csc nostdlib="true" noconfig="true" target="library" output=".\release\dotnetcf-1.0\CompactFormatter.dll" debug="false">
+		<arg value="/filealign:512" />
+		<sources>
+		<includes name="*.cs"/>
+		<includes name="Attributes\*.cs"/>
+		<includes name="Exceptions\*.cs"/>
+		</sources>
+	    <references defaultexcludes="true">
+	        <includes name="${nant.settings.currentframework.frameworkassemblydirectory}/mscorlib.dll"
+				fromPath="false" />
+	        <includes name="${nant.settings.currentframework.frameworkassemblydirectory}/System.Data.dll"
+				fromPath="false" />
+	        <includes name="${nant.settings.currentframework.frameworkassemblydirectory}/System.dll" fromPath="false" />
+	    </references>
+      </csc>
+    </target>
+
+    <target name="buildDebug" description="Builds the library with debug symbols">
+	<echo message="Building ${project.name} library (debug version ${project.codename}:${project.version})"/>
+
+	    <mkdir dir=".\release" failonerror="false"/>
+          <csc target="library" output=".\release\CompactFormatter.dll" debug="true" >
+		<arg value="/filealign:512" />
+		<sources>
+		<includes name="*.cs"/>
+		<includes name="Attributes\*.cs"/>
+		<includes name="Exceptions\*.cs"/>
+		</sources>
+      </csc>
+    </target>
+    <target name="buildNUnit" depends="clean" description="Builds the library with NUnit V2.1 support">
+	<echo message="Building ${project.name} library (version ${project.version}) with NUnit support"/>
+	<property name="nant.settings.currentframework" value="net-1.1" />
+
+	    <mkdir dir=".\release" failonerror="false"/>
+              <csc target="library" output=".\release\CompactFormatter.dll" debug="true">
+		<arg value="/filealign:512" />
+		<sources>
+		<includes name="*.cs"/>
+		<includes name="Attributes\*.cs"/>
+		<includes name="Exceptions\*.cs"/>
+		<includes name="Test\*.cs"/>
+		</sources>
+		<references>
+		<includes name="${nunit.assembly}"/>
+		</references>
+	  </csc>
+	</target>
+    <target name="test" depends="buildNUnit" description="Tests the library with NUnit V2.1" >
+	<echo message="Testing ${project.name} library (version ${project.codename}:${project.version}) with NUnit"/>
+	  <nunit2>
+		<test assemblyname=".\release\CompactFormatter.dll"/>
+	</nunit2>
+    </target>
+	<target name="buildXML" description="Builds the library with XML output for documentation">
+	<delete file=".\release\CompactFormatter.xml" failonerror="false" />
+	    <mkdir dir=".\release" failonerror="false"/>
+		<echo message="Building ${project.name} library (version ${project.codename}:${project.version}) with XML Support"/>
+          <csc target="library" output=".\release\CompactFormatter.dll" debug="true" doc=".\release\CompactFormatter.xml" >
+		<arg value="/filealign:512" />
+		<sources>
+		<includes name="*.cs"/>
+		<includes name="Attributes\*.cs"/>
+		<includes name="Exceptions\*.cs"/>
+		</sources>
+      </csc>
+
+	</target>
+
+    <target name="doc" depends="buildXML" description="Builds the documentation using NDoc">
+	<echo message="Building documentation for ${project.name} with NDoc"/>
+
+	<ndoc>
+	<assemblies>
+		<includes name=".\release\CompactFormatter.dll"/>
+	</assemblies>
+                <documenters>
+                    <documenter name="MSDN">
+                        <property name="OutputDirectory" value=".\doc\MSDN" />
+                        <property name="Title" value="CompactFormatter" />
+                     </documenter>
+                </documenters> 
+	</ndoc>
+	</target>
+
+    <target name="clean" description="Deletes all output directories">
+	<echo message="Clean al binary files for project ${project.name}"/>
+	<delete dir=".\obj" failonerror="false" />
+	<delete dir=".\doc" failonerror="false" />
+	<delete dir=".\release" failonerror="false" />
+	<delete dir=".\bin" failonerror="false" />
+
+	</target>
+</project>
